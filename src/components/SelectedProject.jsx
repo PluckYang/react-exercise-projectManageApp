@@ -1,14 +1,13 @@
 import { data } from "autoprefixer";
 import Tasks from "./Tasks.jsx";
 
-export default function SelectedProject({ project, onDelete }) {
+export default function SelectedProject({ project, onDelete, onAddTask, onDeleteTask, tasks }) {
 
   const formattedDate = new Date(project.dueDate).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric'
   });
-  console.log(formattedDate);
   
   return (
     <div className="w-[35rem] mt-16">
@@ -31,7 +30,7 @@ export default function SelectedProject({ project, onDelete }) {
           {project.description}
         </p>
       </header>
-      <Tasks></Tasks>
+      <Tasks onAdd={onAddTask} onDelete={onDeleteTask} tasks={tasks}></Tasks>
     </div>
   );
 }
